@@ -42,10 +42,7 @@ To tackle this, we focused on:
 
 
 
-**Sales Trends:**
-•	Lowest: Sales hit 2.8 million units in March 2020.
-•	Highest: Sales peaked at 32.2 million units in November 2021.
-**Suggestion:** Analyze the factors that influenced the sales peak and the dip. Implement strategies that replicate the successful conditions of high sales periods and address issues faced during low sales periods.
+
 
 
 
