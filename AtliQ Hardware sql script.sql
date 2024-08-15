@@ -74,7 +74,35 @@ WHERE
             fact_manufacturing_cost)
 ORDER BY manufacturing_cost DESC
 
---*7.Top 3 Products by Total Sold Quantity in Each Division for FY 2021*/
+--*7.Segment Growth in Unique Products:2020-2021 Analysis*/
+
+    with product_count_2020 as (
+select segment,count(distinct product_code) as product_count_2020 from
+dim_product p
+join fact_sales_monthly sm
+using(product_code)
+where sm.fiscal_year=2020 
+group by segment
+order by product_count_2020 desc
+),
+product_count_2021 as (
+select segment,count(distinct product_code) as product_count_2021 from
+dim_product p
+join fact_sales_monthly sm
+using(product_code)
+where sm.fiscal_year=2021
+group by segment
+order by product_count_2021 desc
+)
+select product_count_2020.segment
+,product_count_2020.product_count_2020,
+product_count_2021.product_count_2021,
+(product_count_2021.product_count_2021-product_count_2020.product_count_2020) as Difference  from product_count_2020
+join product_count_2021
+on product_count_2020.segment=product_count_2021.segment
+order by Difference desc
+    
+--*8.Top 3 Products by Total Sold Quantity in Each Division for FY 2021*/
 with cte1 as (
 select 
 division,
